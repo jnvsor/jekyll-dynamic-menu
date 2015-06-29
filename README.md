@@ -1,8 +1,8 @@
----
-layout: page
-title: About
-permalink: /about/
----
+#jekyll-dynamic-menu
+
+It's a dynamic menu for jekyll.
+
+[DEMO](http://jnvsor.github.io/jekyll-dynamic-menu/about/)
 
 ###Features
 
@@ -21,4 +21,4 @@ permalink: /about/
         * The icons depict the leaf/branch/open/closed state
 * No plugins
     * No plugin dependancies - it just works <sup>TM</sup>
-    * As you can see, it works on github pages
+    * This means it will work on github pages

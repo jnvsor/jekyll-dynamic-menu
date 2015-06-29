@@ -1,5 +1,6 @@
 ---
 layout: default
+title: Index
 ---
 
 <div class="home">
