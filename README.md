@@ -6,8 +6,7 @@ It's a dynamic menu for jekyll.
 
 ###Features
 
-* Dynamically generated
-    * No heavy YML files here!
+* Dynamically generated or custom from JSON
 * Hierarchical
     * Generates nested menu items
     * Unfolds them when opened
@@ -19,6 +18,7 @@ It's a dynamic menu for jekyll.
         * The active path is *italicized*
         * The selected menu item is **bold**
         * The icons depict the leaf/branch/open/closed state
+    * JSON mode lets you add custom classes at will
 * No plugins
     * No plugin dependancies - it just works <sup>TM</sup>
     * This means it will work on github pages

@@ -1,0 +1,44 @@
+[
+    {
+        "title": "Pre-written menu in json",
+        "url": "/about/",
+    },
+    {
+        "title": "Any order you like",
+        "url": "/page/sub2/",
+        "class": "test1",
+        "children": [
+            {
+                "title": "Any classes you like",
+                "url": "/page/",
+                "class": ["test1", "test2"],
+                "children": [
+                    {
+                        "title": "External urls, in new tabs too",
+                        "url": "http://google.com",
+                        "absolute": true,
+                        "target": "_blank"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "title": "Duplicate for all I care",
+        "url": "/page/sub2/",
+        "class": "test1",
+        "children": [
+            {
+                "title": "Any classes you like",
+                "url": "/about/sub/",
+                "class": ["test1", "test2"],
+                "children": [
+                    {
+                        "title": "Woohoo!",
+                        "url": "/page/"
+                    }
+                ]
+            }
+        ]
+    }
+]

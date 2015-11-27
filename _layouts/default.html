@@ -9,7 +9,14 @@
 
     <div class="page-content">
       <div class="wrapper">
-        {% include menulevel url='' %}
+        <div>
+          <h2>Automatic page url based menu</h2>
+          {% include menulevel url='' %}
+        </div>
+        <div>
+          <h2>JSON based custom menu</h2>
+          {% include datamenu menu=site.data.menu %}
+        </div>
         {{ content }}
       </div>
     </div>
