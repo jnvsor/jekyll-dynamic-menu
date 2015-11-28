@@ -5,4 +5,3 @@ description: A dynamically generated hierarchical menu in jekyll without plugins
 baseurl: "/jekyll-dynamic-menu"
 url: "http://jnvsor.github.io"
 github_username:  jnvsor
-menu_show_all: false

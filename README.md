@@ -10,7 +10,7 @@ It's a dynamic menu for jekyll.
 * Hierarchical
     * Generates nested menu items
     * Unfolds them when opened
-    * Unfold all with a simple config variable to control the menu with javascript (Or make a null layout page and request it with ajax or something)
+    * Unfold all with a simple include parameter to control the menu with javascript (Or make a null layout page and request it with ajax or something)
 * Styled
     * Menus and submenus have class `menu`
     * Menu items have classes `leaf`, `branch`, `open`, `closed`, `selected`, and `active` depending on state.

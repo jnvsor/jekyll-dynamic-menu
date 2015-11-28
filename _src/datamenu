@@ -6,7 +6,7 @@
     {% assign childmenu = "" %}
 
     {% if node.children %}
-        {% capture childmenu %}{% include datamenu menu=node.children %}{% endcapture %}
+        {% capture childmenu %}{% include datamenu menu=node.children all=include.all %}{% endcapture %}
     {% endif %}
 
     {% capture classes %}
@@ -22,7 +22,7 @@
 
         {% if node.children and node.children.size != 0 %}
             branch {{ " " }}
-            {% if retval or page.url == node.url or site.menu_show_all %}
+            {% if retval or page.url == node.url or include.all %}
                 open
             {% else %}
                 closed
@@ -42,7 +42,7 @@
             {{ " " }}target="{{ node.target }}"
         {% endif %}
         >{{ node.title | escape }}</a>
-    {% if retval or page.url == node.url or site.menu_show_all %}{{childmenu}}{% endif %}
+    {% if retval or page.url == node.url or include.all %}{{childmenu}}{% endif %}
     {% if retval or page.url == node.url %}{% assign pass_active = true %}{% endif %}
     </li>
 {% endfor %}

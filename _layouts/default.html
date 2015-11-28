@@ -11,11 +11,11 @@
       <div class="wrapper">
         <div>
           <h2>Automatic page url based menu</h2>
-          {% include automenu url='/' %}
+          {% include automenu url='/' all=false %}
         </div>
         <div>
           <h2>Data based custom menu</h2>
-          {% include datamenu menu=site.data.menu %}
+          {% include datamenu menu=site.data.menu all=false %}
         </div>
         {{ content }}
       </div>

@@ -53,7 +53,7 @@
         {% assign childmenu = "" %}
 
         {% unless node.url == "/" %}
-            {% capture childmenu %}{% include automenu url=nexturl %}{% endcapture %}
+            {% capture childmenu %}{% include automenu url=nexturl all=include.all %}{% endcapture %}
         {% endunless %}
 
         {% capture classes %}
@@ -65,7 +65,7 @@
 
             {% if childmenu != "" %}
                 branch {{ " " }}
-                {% if retval or page.url == node.url or site.menu_show_all %}
+                {% if retval or page.url == node.url or include.all %}
                     open
                 {% else %}
                     closed
@@ -76,7 +76,7 @@
         {% endcapture %}
 
         <li class="{{ classes }}"><a href="{{ site.baseurl }}{{node.url}}">{{ node.title | escape }}</a>
-        {% if retval or page.url == node.url or site.menu_show_all %}{{childmenu}}{% endif %}
+        {% if retval or page.url == node.url or include.all %}{{childmenu}}{% endif %}
         {% if retval or page.url == node.url %}{% assign pass_active = true %}{% endif %}
         </li>
     {% endfor %}
