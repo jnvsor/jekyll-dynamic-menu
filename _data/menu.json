@@ -16,7 +16,6 @@
                     {
                         "title": "External urls, in new tabs too",
                         "url": "http://google.com",
-                        "absolute": true,
                         "target": "_blank"
                     }
                 ]
