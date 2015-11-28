@@ -6,7 +6,7 @@ permalink: /about/
 
 ###Features
 
-* Dynamically generated or custom from JSON
+* Dynamically generated or custom from JSON/YAML/CSV
 * Hierarchical
     * Generates nested menu items
     * Unfolds them when opened
@@ -18,7 +18,7 @@ permalink: /about/
         * The active path is *italicized*
         * The selected menu item is **bold**
         * The icons depict the leaf/branch/open/closed state
-    * JSON mode lets you add custom classes at will
+    * Data mode lets you add custom classes at will
 * No plugins
     * No plugin dependancies - it just works <sup>TM</sup>
     * As you can see, it works on github pages
