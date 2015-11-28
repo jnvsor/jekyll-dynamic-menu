@@ -1,5 +1,6 @@
-<ul class="menu">
+{% assign pass_stash = pass_active %}
 {% assign pass_active = false %}
+<ul class="menu">
 {% for node in include.menu %}
     {% assign retval = false %}
     {% assign childmenu = "" %}
@@ -19,7 +20,7 @@
             active {{ " " }}
         {% endif %}
 
-        {% if node.children %}
+        {% if node.children and node.children.size != 0 %}
             branch {{ " " }}
             {% if retval or page.url == node.url or site.menu_show_all %}
                 open
@@ -47,3 +48,4 @@
 {% endfor %}
 </ul>
 {% assign retval = pass_active %}
+{% assign pass_active = pass_stash %}
