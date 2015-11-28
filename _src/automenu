@@ -26,7 +26,7 @@
 
         {% assign url_rest = node.url | remove_first: url_start %}
         {% assign url_rest_size = url_rest | split: "/" | size %}
-        {% assign lastchar = node.url | slice: -1 %}
+        {% assign lastchar = node.url | split: "" | last %}
         {% assign nexturl = node.url %}
 
         {% if url_rest_size == 0 %}
