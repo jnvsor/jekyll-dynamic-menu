@@ -46,7 +46,9 @@
             {% assign nexturl = node.url.size | minus: filename.size %}
             {% assign nexturl = node.url | truncate: nexturl, "" %}
         {% else %}
-            {% continue %}
+            {% unless url_rest_size == 1 and include.url == "/" %}
+                {% continue %}
+            {% endunless %}
         {% endif %}
 
         {% assign retval = false %}
