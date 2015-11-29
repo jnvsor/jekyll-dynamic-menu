@@ -1,4 +1,4 @@
-{% assign pass_stash = pass_active %}
+{% capture pass_stash %}{{ pass_stash }}{% if pass_active %}1{% else %}0{% endif %}{% endcapture %}
 {% assign pass_active = false %}
 <ul class="menu">
 {% for node in include.menu %}
@@ -48,4 +48,11 @@
 {% endfor %}
 </ul>
 {% assign retval = pass_active %}
-{% assign pass_active = pass_stash %}
+{% assign new_active = pass_stash | split: "" | last %}
+{% if new_active == "1" %}
+    {% assign pass_active = true %}
+{% else %}
+    {% assign pass_active = false %}
+{% endif %}
+{% assign new_active = pass_stash.size | minus: 1 %}
+{% assign pass_stash = pass_stash | truncate: new_active, "" %}
