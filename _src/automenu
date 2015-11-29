@@ -1,7 +1,16 @@
 {% capture pass_stash %}{{ pass_stash }}{% if pass_active %}1{% else %}0{% endif %}{% endcapture %}
 {% assign pass_active = false %}
 {% capture menu_inside %}
-    {% for node in site.pages %}
+    {% assign _pages = site.pages %}
+    {% if include.sort %}
+        {% assign _pages = _pages | sort: include.sort %}
+    {% else %}
+        {% assign _pages = _pages | sort: "url" %}
+    {% endif %}
+    {% if include.reverse %}
+        {% assign _pages = _pages | reverse %}
+    {% endif %}
+    {% for node in _pages %}
         {% comment %}
             The main difference between datamenu and automenu is that automenu (By
             virtue of it generating the menu automatically) doesn't know ahead of
@@ -55,7 +64,7 @@
         {% assign childmenu = "" %}
 
         {% unless node.url == "/" %}
-            {% capture childmenu %}{% include automenu url=nexturl all=include.all %}{% endcapture %}
+            {% capture childmenu %}{% include automenu url=nexturl sort=include.sort reverse=include.reverse all=include.all %}{% endcapture %}
         {% endunless %}
 
         {% capture classes %}
