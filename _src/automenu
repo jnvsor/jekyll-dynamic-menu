@@ -1,6 +1,6 @@
-{% capture pass_stash %}{{ pass_stash }}{% if pass_active %}1{% else %}0{% endif %}{% endcapture %}
-{% assign pass_active = false %}
-{% capture menu_inside %}
+{% capture _pass_stash %}{{ _pass_stash }}{% if _pass_active %}1{% else %}0{% endif %}{% endcapture %}
+{% assign _pass_active = false %}
+{% capture _menu_inside %}
     {% assign _pages = site.pages %}
     {% if include.sort %}
         {% assign _pages = _pages | sort: include.sort %}
@@ -28,55 +28,55 @@
             {% continue %}
         {% endunless %}
 
-        {% assign url_start = node.url | truncate: include.url.size, "" %}
-        {% unless include.url == url_start %}
+        {% assign _url_start = node.url | truncate: include.url.size, "" %}
+        {% unless include.url == _url_start %}
             {% continue %}
         {% endunless %}
 
-        {% assign url_rest = node.url | remove_first: url_start %}
-        {% assign url_rest_size = url_rest | split: "/" | size %}
-        {% assign lastchar = node.url | split: "" | last %}
-        {% assign nexturl = node.url %}
+        {% assign _url_rest = node.url | remove_first: _url_start %}
+        {% assign _url_rest_size = _url_rest | split: "/" | size %}
+        {% assign _lastchar = node.url | split: "" | last %}
+        {% assign _nexturl = node.url %}
 
-        {% if url_rest_size == 0 %}
+        {% if _url_rest_size == 0 %}
             {% unless include.url == "/" %}
                 {% continue %}
             {% endunless %}
-        {% elsif lastchar == "/" %}
-            {% unless url_rest_size == 1 %}
+        {% elsif _lastchar == "/" %}
+            {% unless _url_rest_size == 1 %}
                 {% continue %}
             {% endunless %}
-        {% elsif url_rest_size == 2 %}
-            {% assign filename = url_rest | split: "/" | last %}
-            {% assign checkindex = filename | truncate: 6, "" %}
-            {% unless checkindex == "index." %}
+        {% elsif _url_rest_size == 2 %}
+            {% assign _filename = _url_rest | split: "/" | last %}
+            {% assign _checkindex = _filename | truncate: 6, "" %}
+            {% unless _checkindex == "index." %}
                 {% continue %}
             {% endunless %}
-            {% assign nexturl = node.url.size | minus: filename.size %}
-            {% assign nexturl = node.url | truncate: nexturl, "" %}
+            {% assign _nexturl = node.url.size | minus: _filename.size %}
+            {% assign _nexturl = node.url | truncate: _nexturl, "" %}
         {% else %}
-            {% unless url_rest_size == 1 and include.url == "/" %}
+            {% unless _url_rest_size == 1 and include.url == "/" %}
                 {% continue %}
             {% endunless %}
         {% endif %}
 
-        {% assign retval = false %}
-        {% assign childmenu = "" %}
+        {% assign _retval = false %}
+        {% assign _childmenu = "" %}
 
         {% unless node.url == "/" %}
-            {% capture childmenu %}{% include automenu url=nexturl sort=include.sort reverse=include.reverse all=include.all %}{% endcapture %}
+            {% capture _childmenu %}{% include automenu url=_nexturl sort=include.sort reverse=include.reverse all=include.all %}{% endcapture %}
         {% endunless %}
 
-        {% capture classes %}
+        {% capture _classes %}
             {% if page.url == node.url %}
                 selected {{ " " }}
-            {% elsif retval %}
+            {% elsif _retval %}
                 active {{ " " }}
             {% endif %}
 
-            {% if childmenu != "" %}
+            {% if _childmenu != "" %}
                 branch {{ " " }}
-                {% if retval or page.url == node.url or include.all %}
+                {% if _retval or page.url == node.url or include.all %}
                     open
                 {% else %}
                     closed
@@ -86,23 +86,23 @@
             {% endif %}
         {% endcapture %}
 
-        <li class="{{ classes }}"><a href="{{ site.baseurl }}{{node.url}}">{{ node.title | escape }}</a>
-        {% if retval or page.url == node.url or include.all %}{{childmenu}}{% endif %}
-        {% if retval or page.url == node.url %}{% assign pass_active = true %}{% endif %}
+        <li class="{{ _classes }}"><a href="{{ site.baseurl }}{{ node.url }}">{{ node.title | escape }}</a>
+        {% if _retval or page.url == node.url or include.all %}{{ _childmenu }}{% endif %}
+        {% if _retval or page.url == node.url %}{% assign _pass_active = true %}{% endif %}
         </li>
     {% endfor %}
 {% endcapture %}
-{% unless menu_inside == "" %}
+{% unless _menu_inside == "" %}
     <ul class="menu">
-        {{ menu_inside }}
+        {{ _menu_inside }}
     </ul>
 {% endunless %}
-{% assign retval = pass_active %}
-{% assign new_active = pass_stash | split: "" | last %}
-{% if new_active == "1" %}
-    {% assign pass_active = true %}
+{% assign _retval = _pass_active %}
+{% assign _tmp = _pass_stash | split: "" | last %}
+{% if _tmp == "1" %}
+    {% assign _pass_active = true %}
 {% else %}
-    {% assign pass_active = false %}
+    {% assign _pass_active = false %}
 {% endif %}
-{% assign new_active = pass_stash.size | minus: 1 %}
-{% assign pass_stash = pass_stash | truncate: new_active, "" %}
+{% assign _tmp = _pass_stash.size | minus: 1 %}
+{% assign _pass_stash = _pass_stash | truncate: _tmp, "" %}
