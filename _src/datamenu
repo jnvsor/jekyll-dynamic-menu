@@ -32,12 +32,29 @@
         {% endif %}
     {% endcapture %}
 
-    <li class="{{ _classes }}"><a href="
-        {% unless node.url contains ":" %}
-            {{ site.baseurl }}
-        {% endunless %}
-        {{ node.url }}"
+    {% assign _href = "" %}
+    {% if node.url %}
+        {% assign _spliturl = node.url | split: "" %}
+        {% assign _relative = true %}
+        {% if _spliturl[0] == "/" and _spliturl[1] == "/" %}
+            {% assign _relative = false %}
+        {% endif %}
+        {% if node.url contains ":" %}
+            {% assign _relative = false %}
+        {% endif %}
 
+        {% capture _href %}
+            {{ " " }}
+            href="
+            {% if _relative %}
+                {{ site.baseurl }}
+            {% endif %}
+            {{ node.url }}"
+        {% endcapture %}
+    {% endif %}
+
+    <li class="{{ _classes }}"><a
+        {{ _href }}
         {% if node.target %}
             {{ " " }}target="{{ node.target }}"
         {% endif %}
