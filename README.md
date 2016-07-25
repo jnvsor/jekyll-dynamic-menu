@@ -29,10 +29,10 @@ It's a dynamic menu for jekyll.
 ### automenu
 
 1. add [automenu](_includes/automenu) into your _include folder,
-1. insert `{% include automenu url='/' sort="url" reverse=false all=false %}` into your code where automenu needed.
+2. insert `{% include automenu url='/' sort="url" reverse=false all=false %}` into your code where automenu needed.
 
 ### datamenu
 
 1. add [datamenu](_includes/datamenu) into your _include folder,
-1. add your [json](_data/menu.json) or yaml menu [data file](https://jekyllrb.com/docs/datafiles/),
-1. insert `{% include datamenu menu=site.data.menu all=false %}` into your code where datamenu needed.
+2. add your [json](_data/menu.json) or yaml menu [data file](https://jekyllrb.com/docs/datafiles/),
+3. insert `{% include datamenu menu=site.data.menu all=false %}` into your code where datamenu needed.
