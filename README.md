@@ -34,5 +34,5 @@ It's a dynamic menu for jekyll.
 ### datamenu
 
 1. add [datamenu](_includes/datamenu) into your _include folder,
-1. add your [menu.json](_data/menu.json) into your _data folder,
+1. add your [json](_data/menu.json) or yaml menu [data file](https://jekyllrb.com/docs/datafiles/),
 1. insert `{% include datamenu menu=site.data.menu all=false %}` into your code where datamenu needed.
