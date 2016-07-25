@@ -35,4 +35,4 @@ It's a dynamic menu for jekyll.
 1 add your [menu.json](_data/menu.json) into your _data folder,
 1 insert `{% include datamenu menu=site.data.menu all=false %}` into your code where datamenu needed.
 
-Style your menu with [menu.scss](_sass/menu.scss), dont' forget to include it in your `/css/main.scss`
+Style your menu with [menu.scss](_sass/_menu.scss), dont' forget to include it in your `/css/main.scss`
