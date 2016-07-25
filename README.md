@@ -27,12 +27,12 @@ It's a dynamic menu for jekyll.
 ## Usage
 
 ### automenu
-1 add [automenu](_includes/automenu) into your _include folder,
-1 insert `{% include automenu url='/' sort="url" reverse=false all=false %}` into your code where automenu needed.
+
+1. add [automenu](_includes/automenu) into your _include folder,
+1. insert `{% include automenu url='/' sort="url" reverse=false all=false %}` into your code where automenu needed.
 
 ### datamenu
-1 add [datamenu](_includes/datamenu) into your _include folder,
-1 add your [menu.json](_data/menu.json) into your _data folder,
-1 insert `{% include datamenu menu=site.data.menu all=false %}` into your code where datamenu needed.
 
-Style your menu with [menu.scss](_sass/_menu.scss), dont' forget to include it in your `/css/main.scss`
+1. add [datamenu](_includes/datamenu) into your _include folder,
+1. add your [menu.json](_data/menu.json) into your _data folder,
+1. insert `{% include datamenu menu=site.data.menu all=false %}` into your code where datamenu needed.
